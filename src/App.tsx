@@ -175,48 +175,91 @@ export default function App() {
       <div className="grain" />
 
       {/* HERO */}
-      <header className="relative overflow-hidden border-b border-[var(--line)] px-6 pb-20 pt-16 sm:pt-24">
+<header className="relative overflow-hidden border-b border-[var(--line)] px-6 pb-20 pt-10 sm:pb-24 sm:pt-14">
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[var(--clay)]/10 blur-3xl"
+  />
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute -left-20 top-1/2 h-64 w-64 rounded-full bg-[var(--clay)]/[0.07] blur-3xl"
+  />
+
+  <div className="relative mx-auto max-w-6xl">
+
+    {/* LOGO */}
+    <div className="rise-in mb-10 flex justify-center">
+      <img
+        src="/logo-erica.jpg"
+        alt="Érica Soares — Psicanálise e Neurociência Aplicada"
+        className="w-48 sm:w-56 md:w-64"
+      />
+    </div>
+
+    {/* CONTEÚDO */}
+    <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+
+      {/* TEXTO */}
+      <div className="text-center lg:text-left">
+        <p className="rise-in mb-5 text-[12px] font-semibold uppercase tracking-[0.28em] text-[var(--clay)]">
+          Sessão de Mapeamento de Padrão
+        </p>
+
+        <h1
+          className="rise-in font-display text-[2.25rem] font-medium leading-[1.12] text-[var(--ink)] sm:text-[3rem] lg:text-[3.45rem]"
+          style={{ animationDelay: '0.08s' }}
+        >
+          Você sabe que essa relação não te faz bem…
+          <span className="block italic text-[var(--clay-deep)]">
+            mas não consegue sair.
+          </span>
+        </h1>
+
+        <p
+          className="rise-in mt-6 max-w-xl font-display text-xl italic leading-relaxed text-[var(--ink-soft)] lg:mx-0"
+          style={{ animationDelay: '0.16s' }}
+        >
+          Ou até se afasta… mas acaba voltando.
+        </p>
+
+        <p
+          className="rise-in mx-auto mt-5 max-w-lg text-[1.05rem] leading-relaxed text-[var(--ink)] lg:mx-0"
+          style={{ animationDelay: '0.22s' }}
+        >
+          Você não precisa continuar tentando resolver isso sozinha.
+        </p>
+
         <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-32 -top-40 h-96 w-96 rounded-full bg-[var(--clay)]/10 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-[var(--clay)]/[0.07] blur-3xl"
-        />
-
-        <div className="relative mx-auto max-w-2xl text-center">
-          <p className="rise-in mb-8 text-[13px] font-medium uppercase tracking-[0.3em] text-[var(--ink-soft)]">
-            Sessão de Mapeamento de Padrão
-          </p>
-
-          <h1
-            className="rise-in font-display text-[2.1rem] font-medium leading-[1.2] text-[var(--ink)] sm:text-[2.75rem]"
-            style={{ animationDelay: '0.08s' }}
-          >
-            Você sabe que essa relação não te faz bem…
-            <br className="hidden sm:block" /> mas não consegue sair.
-          </h1>
-
-          <p
-            className="rise-in mx-auto mt-6 max-w-md font-display text-xl italic text-[var(--ink-soft)]"
-            style={{ animationDelay: '0.18s' }}
-          >
-            Ou até se afasta… mas acaba voltando.
-          </p>
-
-          <p
-            className="rise-in mx-auto mt-5 max-w-sm text-[1.05rem] leading-relaxed text-[var(--ink)]"
-            style={{ animationDelay: '0.23s' }}
-          >
-            Você não precisa continuar tentando resolver isso sozinha.
-          </p>
-
-          <div className="rise-in mt-11" style={{ animationDelay: '0.28s' }}>
-            <CtaButton />
-          </div>
+          className="rise-in mt-9 flex justify-center lg:justify-start"
+          style={{ animationDelay: '0.28s' }}
+        >
+          <CtaButton />
         </div>
-      </header>
+      </div>
+
+      {/* FOTO */}
+      <div
+        className="rise-in relative mx-auto w-full max-w-md"
+        style={{ animationDelay: '0.14s' }}
+      >
+        <div className="absolute -inset-3 rounded-[2rem] bg-[var(--clay)]/10 blur-xl" />
+
+        <div className="relative overflow-hidden rounded-[2rem] border border-[var(--line)] bg-white/60 p-2 shadow-[0_20px_60px_rgba(65,45,35,0.12)]">
+          <img
+            src="/erica-topo.jpg"
+            alt="Érica Soares"
+            className="aspect-[4/5] w-full rounded-[1.6rem] object-cover object-top"
+          />
+        </div>
+
+        <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--paper)]/95 px-5 py-2 text-xs font-medium tracking-wide text-[var(--ink-soft)] shadow-sm backdrop-blur">
+          Atendimento individual e online
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>
 
       <main>
         {/* IDENTIFICAÇÃO */}
