@@ -175,7 +175,7 @@ export default function App() {
       <div className="grain" />
 
       {/* HERO */}
-<header className="relative overflow-hidden border-b border-[var(--line)] px-6 pb-20 pt-10 sm:pb-24 sm:pt-14">
+<header className="relative overflow-hidden border-b border-[var(--line)] px-6 pb-20 pt-6 sm:pb-24 sm:pt-8">
   <div
     aria-hidden="true"
     className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[var(--clay)]/10 blur-3xl"
@@ -188,13 +188,13 @@ export default function App() {
   <div className="relative mx-auto max-w-6xl">
 
     {/* LOGO */}
-    <div className="rise-in mb-10 flex justify-center">
-      <img
-        src="/logo-erica.jpg"
-        alt="Érica Soares — Psicanálise e Neurociência Aplicada"
-        className="w-48 sm:w-56 md:w-64"
-      />
-    </div>
+<div className="rise-in mb-8 flex justify-center">
+  <img
+    src="/logo-erica.jpg"
+    alt="Érica Soares — Psicanálise e Neurociência Aplicada"
+    className="w-32 sm:w-36 mix-blend-multiply"
+  />
+</div>
 
     {/* CONTEÚDO */}
     <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
