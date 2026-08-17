@@ -187,7 +187,7 @@ export default function App() {
       <div className="grain" />
 
       {/* HERO */}
-      <header className="relative overflow-hidden border-b border-[var(--line)] px-5 pb-14 pt-3 sm:px-6 sm:pb-24 sm:pt-8">
+      <header className="relative overflow-hidden border-b border-[var(--line)] px-7 pb-14 pt-3 sm:px-6 sm:pb-24 sm:pt-8">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[var(--clay)]/10 blur-3xl"
@@ -214,7 +214,7 @@ export default function App() {
               </p>
 
               <h1
-                className="rise-in font-display text-[2rem] font-medium leading-[1.08] text-[var(--ink)] sm:text-[2.75rem] lg:text-[3.05rem]"
+                className="rise-in font-display text-[1.78rem] font-medium leading-[1.08] text-[var(--ink)] sm:text-[2.75rem] lg:text-[3.05rem]"
                 style={{ animationDelay: '0.08s' }}
               >
                 Você sabe o que gostaria de fazer.
@@ -226,7 +226,7 @@ export default function App() {
               </h1>
 
               <p
-                className="rise-in mx-auto mt-6 max-w-xl font-display text-[1.2rem] leading-relaxed text-[var(--ink-soft)] lg:mx-0"
+                className="rise-in mx-auto mt-6 max-w-xl font-display text-[1.05rem] leading-[1.65] text-[var(--ink-soft)] sm:text-[1.2rem] lg:mx-0"
                 style={{ animationDelay: '0.16s' }}
               >
                 Você se afasta e volta. Tenta colocar limites, mas flexibiliza.
