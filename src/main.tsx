@@ -11,9 +11,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/formulario" element={<Formulario />} />
-      </Routes>
+  <Route path="/" element={<App />} />
+  <Route path="/mapeamento" element={<App />} />
+  <Route path="/formulario" element={<Formulario />} />
+</Routes>
     </BrowserRouter>
   </React.StrictMode>,
 );
