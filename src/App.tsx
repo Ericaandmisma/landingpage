@@ -9,7 +9,7 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponen
   WHATSAPP_MESSAGE,
 )}`
 
-const CTA_LABEL = 'Quero agendar meu mapeamento'
+const CTA_LABEL = 'Quero verificar os horários'
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -183,8 +183,7 @@ export default function App() {
                 <CtaButton />
 
                 <p className="mx-auto mt-3 max-w-sm text-[10px] leading-relaxed text-[var(--ink-soft)] lg:mx-0">
-                  Ao clicar, você fala com nossa equipe pelo WhatsApp para
-                  verificar os horários disponíveis.
+                  Você será direcionada ao WhatsApp para consultar os horários disponíveis. O agendamento só é confirmado após sua escolha.
                 </p>
               </div>
             </div>
