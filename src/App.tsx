@@ -3,13 +3,13 @@ import type { ReactNode } from 'react'
 const WHATSAPP_NUMBER = '5511993954374'
 
 const WHATSAPP_MESSAGE =
-  'Olá! Vim pela página da Sessão de Mapeamento de Padrão e gostaria de entender como funciona.'
+  'Olá! Vim pela página da Sessão de Mapeamento de Padrão e gostaria de verificar os horários disponíveis para agendar.'
 
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   WHATSAPP_MESSAGE,
 )}`
 
-const CTA_LABEL = 'Quero agendar minha sessão'
+const CTA_LABEL = 'Quero agendar meu mapeamento'
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -20,25 +20,6 @@ function WhatsAppIcon({ className }: { className?: string }) {
       aria-hidden="true"
     >
       <path d="M12.04 2.5c-5.3 0-9.6 4.3-9.6 9.6 0 1.77.48 3.42 1.31 4.85L2.5 21.5l4.68-1.23a9.55 9.55 0 0 0 4.86 1.33h.01c5.3 0 9.6-4.3 9.6-9.6s-4.3-9.6-9.61-9.6Zm5.62 13.7c-.24.67-1.4 1.3-1.92 1.36-.5.06-1 .1-3.1-.66-2.62-.94-4.31-3.6-4.44-3.77-.13-.17-1.06-1.41-1.06-2.68 0-1.28.67-1.9.9-2.16.24-.26.52-.32.7-.32.17 0 .35 0 .5.01.17.01.4-.06.62.48.24.58.8 2 .87 2.14.07.14.12.31.02.5-.1.19-.16.31-.3.48-.15.17-.31.38-.44.5-.15.14-.3.3-.14.6.17.3.76 1.26 1.63 2.03 1.13 1 2.08 1.32 2.4 1.47.24.11.4.1.55-.06.17-.19.72-.83.92-1.12.19-.28.39-.24.65-.14.27.1 1.68.8 1.97.94.29.15.48.22.55.34.07.12.07.68-.17 1.35Z" />
-    </svg>
-  )
-}
-
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 20 20"
-      className={className}
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M4 10.5 8 14.5 16 6"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
     </svg>
   )
 }
@@ -62,7 +43,7 @@ function CtaButton({
           })
         }
       }}
-      className={`pulse-cta group inline-flex items-center justify-center gap-3 rounded-full bg-[var(--clay)] px-9 py-5 text-lg font-medium text-[var(--paper)] shadow-[0_14px_30px_-10px_rgba(127,57,40,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--clay-deep)] hover:shadow-[0_18px_36px_-8px_rgba(127,57,40,0.6)] active:translate-y-0 ${className}`}
+      className={`pulse-cta inline-flex min-h-[48px] w-auto max-w-full items-center justify-center gap-2.5 rounded-full bg-[var(--clay)] px-6 py-3 text-center text-[0.9rem] font-semibold text-white shadow-[0_10px_24px_-10px_rgba(127,57,40,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--clay-deep)] sm:px-8 sm:py-3.5 sm:text-[0.95rem] ${className}`}
     >
       <WhatsAppIcon className="h-5 w-5 shrink-0" />
       {label}
@@ -72,207 +53,151 @@ function CtaButton({
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.22em] text-[var(--clay)]">
+    <span className="mb-3 inline-block text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--clay)] sm:text-[11px]">
       {children}
     </span>
   )
 }
 
-function CheckList({ items }: { items: string[] }) {
-  return (
-    <ul className="mt-6 space-y-3.5 text-left">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-3">
-          <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-[var(--clay)]" />
-          <span className="text-[1.02rem] leading-relaxed text-[var(--ink)]">
-            {item}
-          </span>
-        </li>
-      ))}
-    </ul>
-  )
-}
-
-function FaqItem({
-  question,
-  answer,
-}: {
-  question: string
-  answer: string
-}) {
-  return (
-    <details className="group border-b border-[var(--line)] py-5 [&_summary::-webkit-details-marker]:hidden">
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-display text-[1.1rem] font-medium text-[var(--ink)]">
-        {question}
-
-        <span
-          aria-hidden="true"
-          className="shrink-0 text-xl font-light text-[var(--clay)] transition-transform duration-200 group-open:rotate-45"
-        >
-          +
-        </span>
-      </summary>
-
-      <p className="mt-3 text-[1.02rem] leading-relaxed text-[var(--ink-soft)]">
-        {answer}
-      </p>
-    </details>
-  )
-}
-
-const TRIED_ITEMS = [
-  'conversar mais uma vez',
-  'colocar um limite claro',
-  'se afastar por alguns dias ou semanas',
-  'encerrar a relação',
-  'prometer a si mesma que dessa vez seria diferente',
-]
-
-const IMPACT_ITEMS = [
-  'rever decisões que pareciam definitivas',
-  'flexibilizar limites que você mesma havia estabelecido',
-  'duvidar cada vez mais do próprio julgamento',
-  'sentir culpa quando tenta se priorizar',
-  'perceber uma distância cada vez maior entre a relação que vive e a que deseja construir',
-]
-
-const OFFER_OUTCOMES = [
-  'uma leitura estruturada do ciclo que apareceu durante a sessão',
-  'uma hipótese estruturada sobre os padrões que podem estar influenciando suas escolhas',
-  'clareza sobre como essa dinâmica pode estar impactando suas decisões e relações',
-  'um foco prioritário escolhido com você para orientar o próximo passo',
-]
-
-const FAQ_ITEMS = [
+const OBJECTIONS = [
   {
-    question: 'O que eu vou levar comigo depois da sessão?',
-    answer:
-      'Ao final, você terá uma leitura estruturada do ciclo que apareceu durante a sessão, uma hipótese sobre os padrões que podem estar influenciando suas escolhas e um foco prioritário para orientar seu próximo passo. Depois do encontro, você também recebe pelo WhatsApp o seu Mapa de Padrão Emocional personalizado.',
+    title: '“Mas eu nem sei se quero terminar.”',
+    text: 'Você não precisa chegar com essa decisão tomada. A sessão não existe para dizer se você deve ficar ou terminar. Nós localizamos o que acontece quando sua decisão começa a mudar e definimos onde agir primeiro.',
   },
   {
-    question: 'Como a Érica se prepara para a minha sessão?',
-    answer:
-      'Antes do encontro, você responde um formulário com informações sobre o que está vivendo. Esse material é analisado previamente para organizar os principais pontos que precisam ser aprofundados. Durante a sessão, partimos dessas informações para investigar situações concretas, repetições e os momentos em que suas decisões começam a mudar.',
+    title: '“E se eu não quiser continuar depois?”',
+    text: 'Não existe obrigação de continuidade. A Sessão de Mapeamento é uma entrega independente e você recebe seu Mapa de Padrão Emocional mesmo que decida não seguir em nenhum outro processo.',
   },
   {
-    question: 'Preciso já saber exatamente qual é o meu problema?',
-    answer:
-      'Não. Muitas pessoas chegam justamente porque conseguem perceber que algo se repete, mas ainda não conseguem organizar o que está acontecendo. O papel do mapeamento é transformar essa sensação difusa em uma leitura mais estruturada do ciclo e do ponto que merece atenção primeiro.',
-  },
-  {
-    question: 'Preciso estar decidida a terminar minha relação?',
-    answer:
-      'Não. Você não precisa chegar com uma decisão tomada. O foco da sessão é compreender melhor o que pode estar influenciando suas escolhas para que consiga olhar para a situação com mais estrutura antes de decidir seus próximos passos.',
-  },
-  {
-    question: 'O que é possível fazer em uma única sessão?',
-    answer:
-      'A proposta é chegar a um primeiro mapa: identificar como o ciclo aparece, compreender quais pontos parecem sustentar essa repetição e definir qual merece atenção prioritária. Questões construídas ao longo do tempo podem exigir um trabalho posterior mais aprofundado, mas a sessão já oferece uma direção concreta de onde começar.',
-  },
-  {
-    question: 'Preciso continuar em outro processo depois?',
-    answer:
-      'Não. A Sessão de Mapeamento é uma entrega independente. Você recebe sua devolutiva e o seu Mapa de Padrão Emocional mesmo que decida não dar continuidade a nenhum outro processo.',
-  },
-  {
-    question: 'Quanto tempo dura e como faço para agendar?',
-    answer:
-      'O atendimento é individual, online e tem duração de até 90 minutos. O investimento é de R$147. O pagamento e a escolha do horário são combinados diretamente pelo WhatsApp.',
+    title: '“Uma sessão vai resolver tudo?”',
+    text: 'Não. A proposta não é prometer resolver em 90 minutos algo que pode ter se repetido por anos. O objetivo é sair do “eu volto atrás de novo” para localizar onde isso começa e definir o primeiro ponto de ação.',
   },
 ]
 
 export default function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[var(--paper)]">
       <div className="grain" />
 
       {/* HERO */}
-      <header className="relative overflow-hidden border-b border-[var(--line)] px-7 pb-14 pt-3 sm:px-6 sm:pb-24 sm:pt-8">
+      <header className="relative overflow-hidden border-b border-[var(--line)] px-5 pb-9 pt-3 sm:px-6 sm:pb-14 sm:pt-7">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[var(--clay)]/10 blur-3xl"
+          className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[var(--clay)]/10 blur-3xl"
         />
 
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-20 top-1/2 h-64 w-64 rounded-full bg-[var(--clay)]/[0.07] blur-3xl"
-        />
-
-        <div className="relative mx-auto max-w-6xl">
-          <div className="rise-in mb-4 flex justify-center sm:mb-8">
+        <div className="relative mx-auto max-w-5xl">
+          <div className="rise-in mb-2 flex justify-center sm:mb-6">
             <img
               src="/logo-erica.jpg"
               alt="Érica Soares — Psicanálise e Neurociência Aplicada"
-              className="w-28 mix-blend-multiply sm:w-36"
+              className="w-[72px] mix-blend-multiply sm:w-28"
             />
           </div>
 
-          <div className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
+          <div className="grid items-center gap-7 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
             <div className="text-center lg:text-left">
-              <p className="rise-in mb-5 text-[12px] font-semibold uppercase tracking-[0.28em] text-[var(--clay)]">
+              <p className="rise-in mb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--clay)]">
                 Sessão de Mapeamento de Padrão
               </p>
 
               <h1
-                className="rise-in font-display text-[1.78rem] font-medium leading-[1.08] text-[var(--ink)] sm:text-[2.75rem] lg:text-[3.05rem]"
-                style={{ animationDelay: '0.08s' }}
+                className="rise-in font-display text-[1.8rem] font-medium leading-[1.07] text-[var(--ink)] sm:text-[2.65rem] lg:text-[3rem]"
+                style={{ animationDelay: '0.05s' }}
               >
-                Você sabe o que gostaria de fazer.
+                Você sabe o que não quer mais aceitar.
 
                 <span className="mt-2 block italic text-[var(--clay-deep)]">
-                  Mas, quando chega a hora de sustentar essa decisão, acaba
-                  cedendo.
+                  O difícil é sustentar essa decisão quando existe envolvimento
+                  emocional.
                 </span>
               </h1>
 
-              <p
-                className="rise-in mx-auto mt-6 max-w-xl font-display text-[1.05rem] leading-[1.65] text-[var(--ink-soft)] sm:text-[1.2rem] lg:mx-0"
-                style={{ animationDelay: '0.16s' }}
+              {/* FOTO MOBILE */}
+              <div
+                className="rise-in relative mx-auto mt-5 w-full max-w-[320px] lg:hidden"
+                style={{ animationDelay: '0.1s' }}
               >
-                Você se afasta e volta. Tenta colocar limites, mas flexibiliza.
-                Ou percebe que continua em relações que não combinam com aquilo
-                que deseja construir.
+                <div className="overflow-hidden rounded-[20px] border border-[var(--line)] bg-white/50 p-1.5 shadow-[0_15px_36px_rgba(65,45,35,0.10)]">
+                  <img
+                    src="/hero-mapeamento.jpg"
+                    alt="Mulher refletindo ao olhar uma mensagem no celular"
+                    className="h-[225px] w-full rounded-[15px] object-cover object-center"
+                    fetchPriority="high"
+                  />
+                </div>
+              </div>
+
+              <p
+                className="rise-in mx-auto mt-5 max-w-xl text-[0.94rem] leading-[1.6] text-[var(--ink-soft)] lg:mx-0"
+                style={{ animationDelay: '0.13s' }}
+              >
+                Você se afasta e volta. Coloca um limite e flexibiliza. Decide
+                que dessa vez será diferente e, em algum momento, aquilo que
+                parecia claro começa a perder força.
               </p>
 
               <p
-                className="rise-in mx-auto mt-5 max-w-xl text-[1rem] leading-relaxed text-[var(--ink)] lg:mx-0"
-                style={{ animationDelay: '0.22s' }}
+                className="rise-in mx-auto mt-4 max-w-xl font-display text-[1.06rem] font-medium leading-[1.48] text-[var(--ink)] lg:mx-0"
+                style={{ animationDelay: '0.17s' }}
               >
-                Na Sessão de Mapeamento de Padrão, você organiza o ciclo que se
-                repete, identifica o que pode estar influenciando suas escolhas
-                e define qual ponto merece atenção primeiro.
+                Na sessão, nós localizamos onde essa mudança começa e definimos
+                onde agir primeiro para
+                <span className="italic text-[var(--clay-deep)]">
+                  {' '}
+                  começar a quebrar a repetição.
+                </span>
               </p>
+
+              {/* OFERTA HERO */}
+              <div
+                className="rise-in mx-auto mt-5 max-w-md border-y border-[var(--line)] py-4 text-left lg:mx-0"
+                style={{ animationDelay: '0.2s' }}
+              >
+                <p className="text-[0.88rem] font-medium leading-relaxed text-[var(--ink)]">
+                  Sessão individual de até 90 minutos
+                  <span className="text-[var(--ink-soft)]">
+                    {' '}
+                    + Mapa de Padrão Emocional personalizado
+                  </span>
+                </p>
+
+                <div className="mt-3 flex items-end justify-between gap-5">
+  <p className="text-[0.82rem] text-[var(--ink-soft)]">
+    Investimento ·{' '}
+    <strong className="text-[1.05rem] font-semibold text-[var(--ink)]">
+      R$ 147
+    </strong>
+  </p>
+
+  <p className="max-w-[130px] text-right text-[10px] leading-relaxed text-[var(--ink-soft)]">
+    Online · individual · até 90 min
+  </p>
+</div>
+              </div>
 
               <div
-                className="rise-in mt-7 flex justify-center lg:justify-start"
-                style={{ animationDelay: '0.28s' }}
+                className="rise-in mt-5"
+                style={{ animationDelay: '0.24s' }}
               >
-                <div className="flex flex-col items-center">
-                  <CtaButton />
+                <CtaButton />
 
-                  <p className="mt-4 text-center text-sm text-[var(--ink-soft)]">
-                    Online · Individual · até 90 minutos · R$147
-                  </p>
-                </div>
+                <p className="mx-auto mt-3 max-w-sm text-[10px] leading-relaxed text-[var(--ink-soft)] lg:mx-0">
+                  Ao clicar, você fala com nossa equipe pelo WhatsApp para
+                  verificar os horários disponíveis.
+                </p>
               </div>
             </div>
 
-            <div
-              className="rise-in relative mx-auto w-full max-w-md"
-              style={{ animationDelay: '0.14s' }}
-            >
-              <div className="absolute -inset-3 rounded-[2rem] bg-[var(--clay)]/10 blur-xl" />
-
-              <div className="relative overflow-hidden rounded-[2rem] border border-[var(--line)] bg-white/60 p-2 shadow-[0_20px_60px_rgba(65,45,35,0.12)]">
+            {/* FOTO DESKTOP */}
+            <div className="relative mx-auto hidden w-full max-w-[390px] lg:block">
+              <div className="overflow-hidden rounded-[24px] border border-[var(--line)] bg-white/50 p-1.5 shadow-[0_18px_50px_rgba(65,45,35,0.11)]">
                 <img
-                  src="/erica-topo.jpg"
-                  alt="Érica Soares"
-                  className="aspect-[4/5] w-full rounded-[1.6rem] object-cover object-top"
+                  src="/hero-mapeamento.jpg"
+                  alt="Mulher refletindo ao olhar uma mensagem no celular"
+                  className="aspect-[4/5] w-full rounded-[19px] object-cover object-center"
+                  fetchPriority="high"
                 />
-              </div>
-
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-[var(--line)] bg-[var(--paper)]/95 px-5 py-2 text-xs font-medium tracking-wide text-[var(--ink-soft)] shadow-sm backdrop-blur">
-                Atendimento individual e online
               </div>
             </div>
           </div>
@@ -280,652 +205,422 @@ export default function App() {
       </header>
 
       <main>
-        {/* IDENTIFICAÇÃO */}
-<section className="px-6 py-14 sm:py-16">
-  <div className="mx-auto max-w-[1040px]">
-
-    {/* CABEÇALHO */}
-    <div className="text-center">
-      <SectionLabel>Quando saber não basta</SectionLabel>
-
-      <h2 className="font-display text-[1.65rem] font-medium leading-[1.18] text-[var(--ink)] sm:text-[2.05rem]">
-        Você decide. Tenta se posicionar.
-
-        <span className="mt-2 block italic text-[var(--clay-deep)]">
-          Mas, quando a relação aperta, acaba negociando aquilo que já tinha
-          decidido não aceitar.
-        </span>
-      </h2>
-
-      <p className="mx-auto mt-5 max-w-[650px] text-[1rem] leading-relaxed text-[var(--ink-soft)]">
-        Talvez você saiba exatamente o que gostaria que fosse diferente. O
-        difícil é sustentar essa decisão quando entram em cena o vínculo, a
-        culpa, o medo de perder ou a esperança de que agora seja diferente.
-      </p>
-    </div>
-
-    {/* MAPA VISUAL */}
-    <div className="relative mx-auto mt-14 max-w-[960px]">
-
-      {/* LINHA EDITORIAL AO FUNDO — DESKTOP */}
-      <div
-        aria-hidden="true"
-        className="absolute left-[13%] right-[13%] top-[50%] hidden h-px bg-[var(--line)] md:block"
-      />
-
-      <div className="relative grid gap-10 md:grid-cols-[0.86fr_1.12fr_0.86fr] md:items-center md:gap-12">
-
-        {/* 01 — EU DECIDO */}
-        <div className="relative md:translate-y-5">
-          <div className="border-t border-[var(--line)] pt-5 text-left">
-
-            <span className="font-display text-[0.82rem] tracking-[0.18em] text-[var(--clay)]">
-              01
-            </span>
-
-            <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--clay)]">
-              Eu decido
-            </p>
-
-            <p className="mt-4 font-display text-[1.28rem] font-medium leading-[1.3] text-[var(--ink)]">
-              “Dessa vez, vou
-              <span className="italic text-[var(--clay-deep)]">
-                {' '}
-                manter meu limite.
-              </span>
-              ”
-            </p>
-
-            <p className="mt-4 max-w-[230px] text-[0.95rem] leading-relaxed text-[var(--ink-soft)]">
-              Você sabe o que gostaria de fazer. E, naquele momento, a decisão
-              parece clara.
-            </p>
-          </div>
-        </div>
-
-        {/* 02 — ALGO ATIVA */}
-        <div className="relative">
-
-          {/* ANOTAÇÃO EDITORIAL */}
-          <div className="mb-4 flex items-center gap-3 md:absolute md:-top-10 md:left-0 md:mb-0">
-            <span
-              aria-hidden="true"
-              className="hidden h-px w-8 bg-[var(--clay)]/60 md:block"
-            />
-
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--clay)]">
-              É aqui que vale investigar
-            </p>
-          </div>
-
-          <div className="relative overflow-hidden rounded-[18px] border border-[var(--clay)]/20 bg-[var(--paper-warm)] p-7 text-left shadow-[0_18px_50px_-35px_rgba(91,56,42,0.35)] sm:p-8">
-
-            {/* ACENTO VISUAL */}
-            <div
-              aria-hidden="true"
-              className="absolute left-0 top-0 h-full w-[3px] bg-[var(--clay)]"
-            />
-
-            <span className="font-display text-[0.82rem] tracking-[0.18em] text-[var(--clay)]">
-              02
-            </span>
-
-            <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--clay)]">
-              Algo ativa
-            </p>
-
-            <h3 className="mt-4 font-display text-[1.5rem] font-medium leading-[1.2] text-[var(--ink)] sm:text-[1.65rem]">
-              A decisão
-              <span className="italic text-[var(--clay-deep)]">
-                {' '}
-                começa a mudar.
-              </span>
-            </h3>
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              {[
-                'mensagem',
-                'saudade',
-                'culpa',
-                'medo',
-                'esperança',
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-[var(--line)] bg-white/70 px-3 py-1.5 text-[0.82rem] text-[var(--ink-soft)]"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            <p className="mt-6 max-w-[300px] text-[0.96rem] leading-relaxed text-[var(--ink-soft)]">
-              O que parecia claro começa a balançar — e nem sempre é fácil
-              perceber exatamente em que ponto isso aconteceu.
-            </p>
-          </div>
-        </div>
-
-        {/* 03 — EU REVEJO */}
-        <div className="relative md:-translate-y-3">
-          <div className="border-t border-[var(--line)] pt-5 text-left">
-
-            <span className="font-display text-[0.82rem] tracking-[0.18em] text-[var(--clay)]">
-              03
-            </span>
-
-            <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--clay)]">
-              Eu revejo
-            </p>
-
-            <div className="mt-4 space-y-1 font-display text-[1.24rem] font-medium leading-[1.35] text-[var(--ink)]">
-              <p>“Talvez eu tenha exagerado.”</p>
-
-              <p className="italic text-[var(--clay-deep)]">
-                “Talvez agora seja diferente.”
-              </p>
-            </div>
-
-            <p className="mt-4 max-w-[230px] text-[0.95rem] leading-relaxed text-[var(--ink-soft)]">
-              A pessoa pode até mudar. Mas a dinâmica começa a parecer
-              familiar outra vez.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* FECHAMENTO */}
-      <div className="mx-auto mt-14 max-w-[760px] border-t border-[var(--line)] pt-9 text-center sm:mt-16">
-
-        <p className="font-display text-[1.25rem] font-medium leading-relaxed text-[var(--ink)] sm:text-[1.42rem]">
-          É nesse intervalo —
-          <span className="italic text-[var(--clay-deep)]">
-            {' '}
-            entre decidir e conseguir sustentar a decisão
-          </span>
-          {' '}— que vale olhar com mais atenção.
-        </p>
-
-        <p className="mx-auto mt-4 max-w-[650px] text-[0.98rem] leading-relaxed text-[var(--ink-soft)]">
-          A Sessão de Mapeamento investiga justamente esse ponto: o que acontece
-          entre aquilo que você decide e aquilo que consegue sustentar quando
-          existe envolvimento emocional.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-        {/* IMPACTO */}
-        <section className="border-y border-[var(--line)] bg-[var(--paper-warm)] px-6 py-14 sm:py-16">
-          <div className="mx-auto max-w-[880px]">
+        {/* MECANISMO */}
+        <section className="px-5 py-9 sm:px-6 sm:py-12">
+          <div className="mx-auto max-w-[820px]">
             <div className="text-center">
-              <SectionLabel>O custo da repetição</SectionLabel>
+              <SectionLabel>O ponto em que tudo muda</SectionLabel>
 
-              <h2 className="font-display text-[1.65rem] font-medium leading-[1.18] text-[var(--ink)] sm:text-[2.05rem]">
-                O impacto não está apenas na relação.
-
-                <span className="mt-2 block italic text-[var(--clay-deep)]">
-                  Aos poucos, você pode começar a desconfiar das próprias
-                  decisões.
+              <h2 className="font-display text-[1.58rem] font-medium leading-[1.13] text-[var(--ink)] sm:text-[1.95rem]">
+                Você não muda de decisão
+                <span className="italic text-[var(--clay-deep)]">
+                  {' '}
+                  do nada.
                 </span>
               </h2>
 
-              <p className="mx-auto mt-5 max-w-2xl text-[1rem] leading-relaxed text-[var(--ink-soft)]">
-                Quando o mesmo tipo de impasse aparece várias vezes, o desgaste
-                pode atingir justamente aquilo que você mais precisa para fazer
-                escolhas: confiança no próprio julgamento.
+              <p className="mx-auto mt-3 max-w-lg text-[0.91rem] leading-relaxed text-[var(--ink-soft)]">
+                Existe um momento em que aquilo que parecia certo começa a
+                perder força.
               </p>
             </div>
 
-            <div className="mx-auto mt-9 max-w-xl rounded-[22px] border border-[var(--line)] bg-white/60 p-6 sm:p-7">
-              <ul className="space-y-3">
-                {IMPACT_ITEMS.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-[var(--clay)]" />
+            <div className="mx-auto mt-6 max-w-[720px] overflow-hidden rounded-[18px] border border-[var(--line)] bg-white/55 sm:grid sm:grid-cols-3">
+              <div className="px-5 py-4">
+                <div className="flex items-start gap-4 sm:block">
+                  <span className="font-display text-[0.8rem] text-[var(--clay)]">
+                    01
+                  </span>
 
-                    <span className="text-[1rem] leading-relaxed text-[var(--ink)]">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+                  <div>
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.17em] text-[var(--clay)] sm:mt-2">
+                      Eu decido
+                    </p>
+
+                    <p className="mt-1.5 font-display text-[0.98rem] leading-snug text-[var(--ink)]">
+                      “Dessa vez vou manter meu limite.”
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-y border-[var(--line)] bg-[var(--paper-warm)] px-5 py-4 sm:border-x sm:border-y-0">
+                <div className="flex items-start gap-4 sm:block">
+                  <span className="font-display text-[0.8rem] text-[var(--clay)]">
+                    02
+                  </span>
+
+                  <div>
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.17em] text-[var(--clay)] sm:mt-2">
+                      Algo ativa
+                    </p>
+
+                    <p className="mt-1.5 font-display text-[0.98rem] leading-snug text-[var(--ink)]">
+                      Mensagem. Saudade. Culpa. Medo. Esperança.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-5 py-4">
+                <div className="flex items-start gap-4 sm:block">
+                  <span className="font-display text-[0.8rem] text-[var(--clay)]">
+                    03
+                  </span>
+
+                  <div>
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.17em] text-[var(--clay)] sm:mt-2">
+                      Eu revejo
+                    </p>
+
+                    <p className="mt-1.5 font-display text-[0.98rem] leading-snug text-[var(--ink)]">
+                      “Talvez agora seja diferente.”
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <p className="mx-auto mt-8 max-w-2xl text-center font-display text-[1.18rem] leading-relaxed text-[var(--ink)] sm:text-[1.28rem]">
-              E é aí que tentar simplesmente
+            <p className="mx-auto mt-5 max-w-[590px] text-center font-display text-[1.05rem] font-medium leading-relaxed text-[var(--ink)]">
+              Na sessão, nós localizamos
               <span className="italic text-[var(--clay-deep)]">
                 {' '}
-                “ser mais forte da próxima vez”{' '}
+                onde essa mudança começa{' '}
               </span>
-              costuma ser insuficiente.
+              e definimos onde agir primeiro para começar a quebrar a repetição.
             </p>
           </div>
         </section>
 
-        {/* VIRADA */}
-        <section className="px-6 py-14 sm:py-16">
-          <div className="mx-auto max-w-[820px] text-center">
-            <SectionLabel>Antes de tentar de novo</SectionLabel>
-
-            <h2 className="font-display text-[1.65rem] font-medium leading-[1.18] text-[var(--ink)] sm:text-[2.05rem]">
-              Talvez você não precise de mais um conselho sobre
-              <span className="italic text-[var(--clay-deep)]">
-                {' '}
-                o que deveria fazer.
-              </span>
-            </h2>
-
-            <p className="mx-auto mt-5 max-w-2xl text-[1rem] leading-relaxed text-[var(--ink-soft)]">
-              Você provavelmente já pensou, conversou, tentou se afastar ou
-              estabeleceu limites. A questão é compreender o que acontece
-              justamente nos momentos em que aquilo que parecia tão claro
-              começa a perder força.
-            </p>
-
-            <div className="mx-auto mt-8 max-w-[680px] border-l-2 border-[var(--clay)] px-5 py-2 text-left">
-              <p className="font-display text-[1.2rem] leading-relaxed text-[var(--ink)] sm:text-[1.32rem]">
-                Quando existe repetição, vale investigar
-                <span className="italic text-[var(--clay-deep)]">
-                  {' '}
-                  o ciclo, os momentos que o ativam e o ponto em que sua decisão
-                  começa a mudar.
-                </span>
-              </p>
-
-              <p className="mt-4 text-[0.98rem] leading-relaxed text-[var(--ink-soft)]">
-                Não para encontrar uma explicação única, mas para transformar a
-                repetição em algo que possa ser observado e compreendido com
-                mais estrutura.
-              </p>
-            </div>
-
-            <p className="mx-auto mt-8 max-w-xl font-display text-[1.18rem] leading-relaxed text-[var(--ink)] sm:text-[1.28rem]">
-              É exatamente esse o papel da
-              <span className="font-medium text-[var(--clay-deep)]">
-                {' '}
-                Sessão de Mapeamento de Padrão.
-              </span>
-            </p>
-          </div>
-        </section>
-
-        {/* OFERTA */}
-        <section
-          id="oferta"
-          className="border-y border-[var(--line)] bg-[var(--paper-warm)] px-6 py-16 sm:py-20"
-        >
+        {/* MAPA */}
+        <section className="border-y border-[var(--line)] bg-[var(--paper-warm)] px-5 py-9 sm:px-6 sm:py-13">
           <div className="mx-auto max-w-[820px]">
-            <div className="rounded-[28px] border border-[var(--line)] bg-white/70 p-7 shadow-[0_30px_60px_-30px_rgba(43,36,31,0.22)] sm:p-10">
-              <div className="text-center">
-                <SectionLabel>A sessão</SectionLabel>
+            <div className="grid items-center gap-6 md:grid-cols-[0.95fr_1.05fr] md:gap-10">
+              <div className="text-center md:text-left">
+                <SectionLabel>Você não sai apenas com uma conversa</SectionLabel>
 
-                <h2 className="font-display text-[1.8rem] font-medium leading-tight text-[var(--ink)] sm:text-[2.15rem]">
-                  Sessão de Mapeamento de Padrão
+                <h2 className="font-display text-[1.58rem] font-medium leading-[1.15] text-[var(--ink)] sm:text-[1.9rem]">
+                  Você recebe seu
+                  <span className="italic text-[var(--clay-deep)]">
+                    {' '}
+                    Mapa de Padrão Emocional personalizado.
+                  </span>
                 </h2>
 
-                <p className="mx-auto mt-4 max-w-2xl text-[1rem] leading-relaxed text-[var(--ink-soft)]">
-                  Um encontro individual para organizar aquilo que hoje parece
-                  confuso, identificar como o ciclo se repete e definir qual
-                  ponto merece atenção primeiro.
+                <p className="mx-auto mt-4 max-w-md text-[0.92rem] leading-relaxed text-[var(--ink-soft)] md:mx-0">
+                  Depois da sessão, os principais pontos encontrados ficam
+                  organizados em um material construído a partir do seu
+                  atendimento.
+                </p>
+
+                <p className="mx-auto mt-4 max-w-md font-display text-[1.02rem] font-medium leading-relaxed text-[var(--ink)] md:mx-0">
+                  Você enxerga o ciclo, o ponto em que sua decisão perde força e
+                  <span className="italic text-[var(--clay-deep)]">
+                    {' '}
+                    onde agir primeiro.
+                  </span>
                 </p>
               </div>
 
-              <div className="mt-9 grid gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--clay)]">
-                    01 · Investigação
-                  </p>
-
-                  <p className="mt-3 text-[0.96rem] leading-relaxed text-[var(--ink)]">
-                    Partimos do que você relatou e aprofundamos situações
-                    concretas em que a repetição aparece.
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--clay)]">
-                    02 · Mapeamento
-                  </p>
-
-                  <p className="mt-3 text-[0.96rem] leading-relaxed text-[var(--ink)]">
-                    Organizamos o ciclo e avaliamos quais padrões podem estar
-                    participando dessa dinâmica.
-                  </p>
-                </div>
-
-                <div className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--clay)]">
-                    03 · Foco
-                  </p>
-
-                  <p className="mt-3 text-[0.96rem] leading-relaxed text-[var(--ink)]">
-                    Entre os pontos encontrados, definimos com você qual merece
-                    atenção prioritária a partir daqui.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-8 rounded-[22px] border border-[var(--clay)]/20 bg-[var(--clay)]/[0.05] p-6 sm:p-7">
-                <p className="font-display text-[1.15rem] font-medium text-[var(--ink)]">
-                  Ao final da sessão, você terá:
-                </p>
-
-                <CheckList items={OFFER_OUTCOMES} />
-
-                <div className="mt-6 border-t border-[var(--line)] pt-5">
-                  <p className="text-[0.96rem] leading-relaxed text-[var(--ink-soft)]">
-                    Depois da sessão, você recebe pelo WhatsApp o seu
-                    <strong className="font-medium text-[var(--ink)]">
-                      {' '}
-                      Mapa de Padrão Emocional personalizado
-                    </strong>
-                    , com os principais pontos identificados e o foco escolhido.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-7 text-center">
-                <p className="font-display text-[1.08rem] text-[var(--ink)]">
-                  Sua devolutiva não depende de contratar outro processo.
-                </p>
-
-                <p className="mx-auto mt-2 max-w-xl text-[0.95rem] leading-relaxed text-[var(--ink-soft)]">
-                  Você recebe seu Mapa de Padrão Emocional depois da sessão,
-                  mesmo que decida não continuar em outro processo.
-                </p>
-              </div>
-
-              <div className="mt-8 border-t border-[var(--line)] pt-7 text-center">
-                <p className="text-sm text-[var(--ink-soft)]">
-                  Atendimento individual e online · até 90 minutos
-                </p>
-
-                <p className="mt-2 font-display text-[1.6rem] font-semibold text-[var(--ink)]">
-                  R$147
-                </p>
-
-                <div className="mt-6 flex justify-center">
-                  <CtaButton />
-                </div>
-
-                <p className="mt-4 text-xs leading-relaxed text-[var(--ink-soft)]">
-                  Agendamento e pagamento pelo WhatsApp.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* DEPOIMENTOS */}
-        <section className="px-6 py-14 sm:py-16">
-          <div className="mx-auto max-w-[880px]">
-            <div className="text-center">
-              <SectionLabel>Depois de enxergar o ciclo</SectionLabel>
-
-              <h2 className="font-display text-[1.6rem] font-medium leading-[1.18] text-[var(--ink)] sm:text-[1.95rem]">
-                Às vezes, o primeiro avanço é conseguir
-                <span className="italic text-[var(--clay-deep)]">
-                  {' '}
-                  dar nome ao que antes parecia apenas confuso.
-                </span>
-              </h2>
-
-              <p className="mx-auto mt-4 max-w-2xl text-[0.98rem] leading-relaxed text-[var(--ink-soft)]">
-                Alguns relatos de quem já passou pela Sessão de Mapeamento de
-                Padrão.
-              </p>
-            </div>
-
-            <div className="mt-9 grid gap-5 sm:grid-cols-2">
-              <figure className="rounded-[22px] border border-[var(--line)] bg-white/70 p-7 shadow-sm">
-                <div className="mb-4 font-display text-[2rem] leading-none text-[var(--clay)]/40">
-                  “
-                </div>
-
-                <blockquote className="font-display text-[1.05rem] italic leading-relaxed text-[var(--ink)]">
-                  Eu já tinha pensado muito sobre isso, mas nunca tinha
-                  conseguido organizar o que estava acontecendo. Na sessão,
-                  consegui enxergar o ciclo de uma forma muito mais clara.
-                </blockquote>
-
-                <figcaption className="mt-5 text-sm font-medium tracking-wide text-[var(--ink-soft)]">
-                  — Cliente, 38 anos
-                </figcaption>
-              </figure>
-
-              <figure className="rounded-[22px] border border-[var(--line)] bg-white/70 p-7 shadow-sm">
-                <div className="mb-4 font-display text-[2rem] leading-none text-[var(--clay)]/40">
-                  “
-                </div>
-
-                <blockquote className="font-display text-[1.05rem] italic leading-relaxed text-[var(--ink)]">
-                  Percebi que eu não mudava de decisão do nada. Existiam
-                  situações muito específicas em que eu começava a ceder. Isso
-                  foi o que mais me marcou.
-                </blockquote>
-
-                <figcaption className="mt-5 text-sm font-medium tracking-wide text-[var(--ink-soft)]">
-                  — Cliente, 41 anos
-                </figcaption>
-              </figure>
-
-              <figure className="rounded-[22px] border border-[var(--line)] bg-white/70 p-7 shadow-sm">
-                <div className="mb-4 font-display text-[2rem] leading-none text-[var(--clay)]/40">
-                  “
-                </div>
-
-                <blockquote className="font-display text-[1.05rem] italic leading-relaxed text-[var(--ink)]">
-                  Eu tinha medo de ouvir que precisava terminar ou tomar alguma
-                  decisão. Foi diferente. Eu me senti ouvida e consegui olhar
-                  para o que estava acontecendo sem me sentir julgada.
-                </blockquote>
-
-                <figcaption className="mt-5 text-sm font-medium tracking-wide text-[var(--ink-soft)]">
-                  — Cliente, 32 anos
-                </figcaption>
-              </figure>
-
-              <figure className="rounded-[22px] border border-[var(--line)] bg-white/70 p-7 shadow-sm">
-                <div className="mb-4 font-display text-[2rem] leading-none text-[var(--clay)]/40">
-                  “
-                </div>
-
-                <blockquote className="font-display text-[1.05rem] italic leading-relaxed text-[var(--ink)]">
-                  Saí da sessão entendendo qual ponto eu precisava observar
-                  primeiro. Não foi uma resposta pronta, mas finalmente senti
-                  que tinha um caminho para começar.
-                </blockquote>
-
-                <figcaption className="mt-5 text-sm font-medium tracking-wide text-[var(--ink-soft)]">
-                  — Cliente, 35 anos
-                </figcaption>
-              </figure>
-            </div>
-
-            <p className="mx-auto mt-6 max-w-xl text-center text-xs leading-relaxed text-[var(--ink-soft)]/75">
-              Identificações preservadas para respeitar a privacidade das
-              clientes.
-            </p>
-          </div>
-        </section>
-
-        {/* AUTORIDADE */}
-        <section className="border-y border-[var(--line)] bg-[var(--paper-warm)] px-6 py-16 sm:py-20">
-          <div className="mx-auto max-w-[1050px]">
-            <div className="grid items-start gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
-              <div className="mx-auto w-full max-w-[390px]">
-                <div className="overflow-hidden rounded-[28px] border border-[var(--line)] bg-white/70 p-2 shadow-[0_20px_50px_rgba(65,45,35,0.10)]">
+              <div className="mx-auto w-full max-w-[300px]">
+                <div className="overflow-hidden rounded-[18px] border border-[var(--line)] bg-white/70 p-1.5 shadow-[0_14px_35px_rgba(65,45,35,0.09)]">
                   <img
-                    src="/erica-soares.jpg"
-                    alt="Érica Soares, psicanalista"
-                    className="aspect-[4/5] w-full rounded-[22px] object-cover object-top"
+                    src="/mapa-padrao-emocional.jpg"
+                    alt="Imagem ilustrativa do Mapa de Padrão Emocional"
+                    className="aspect-[4/5] w-full rounded-[13px] object-cover"
                     loading="lazy"
                   />
                 </div>
 
-                <div className="mt-6 text-center">
-                  <p className="font-display text-[1.45rem] font-medium text-[var(--ink)]">
-                    Érica Soares
+                <p className="mt-2 text-center text-[9px] leading-relaxed text-[var(--ink-soft)]">
+                  Imagem ilustrativa. O conteúdo do mapa é construído a partir
+                  da sua sessão.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* VALOR */}
+        <section className="px-5 py-9 sm:px-6 sm:py-12">
+          <div className="mx-auto max-w-[720px]">
+            <div className="text-center">
+              <SectionLabel>O que está incluído</SectionLabel>
+
+              <h2 className="font-display text-[1.58rem] font-medium leading-[1.15] text-[var(--ink)] sm:text-[1.9rem]">
+                Não são apenas
+                <span className="italic text-[var(--clay-deep)]">
+                  {' '}
+                  90 minutos de conversa.
+                </span>
+              </h2>
+            </div>
+
+            <div className="mx-auto mt-6 max-w-[620px] divide-y divide-[var(--line)] border-y border-[var(--line)]">
+              <div className="grid grid-cols-[68px_1fr] gap-4 py-4">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.17em] text-[var(--clay)]">
+                  Antes
+                </p>
+
+                <div>
+                  <p className="font-display text-[1rem] font-medium text-[var(--ink)]">
+                    Você não começa do zero.
                   </p>
 
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--clay)]">
-                    Psicanalista
+                  <p className="mt-1 text-[0.88rem] leading-relaxed text-[var(--ink-soft)]">
+                    Formulário pré-sessão + análise das informações antes do
+                    encontro.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-[68px_1fr] gap-4 py-4">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.17em] text-[var(--clay)]">
+                  Durante
+                </p>
+
+                <div>
+                  <p className="font-display text-[1rem] font-medium text-[var(--ink)]">
+                    Localizamos onde a decisão muda.
                   </p>
 
-                  <p className="mx-auto mt-2 max-w-xs text-xs uppercase leading-relaxed tracking-[0.12em] text-[var(--ink-soft)]">
-                    Especialista em Neurociência do Comportamento Humano
+                  <p className="mt-1 text-[0.88rem] leading-relaxed text-[var(--ink-soft)]">
+                    Até 90 minutos para reconstruir situações, organizar o ciclo
+                    e definir onde agir primeiro.
                   </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-[68px_1fr] gap-4 py-4">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.17em] text-[var(--clay)]">
+                  Depois
+                </p>
+
+                <div>
+                  <p className="font-display text-[1rem] font-medium text-[var(--ink)]">
+                    Você leva o seu mapa.
+                  </p>
+
+                  <p className="mt-1 text-[0.88rem] leading-relaxed text-[var(--ink-soft)]">
+                    Mapa de Padrão Emocional personalizado enviado pelo
+                    WhatsApp.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PROVA */}
+<section className="border-y border-[var(--line)] bg-[var(--paper-warm)] px-5 py-8 sm:px-6 sm:py-11">
+  <div className="mx-auto max-w-[760px]">
+    <div className="text-center">
+      <SectionLabel>Quem já passou pela sessão</SectionLabel>
+
+      <h2 className="font-display text-[1.48rem] font-medium leading-[1.15] text-[var(--ink)] sm:text-[1.8rem]">
+        Quando você consegue enxergar
+        <span className="italic text-[var(--clay-deep)]">
+          {' '}onde começa a ceder.
+        </span>
+      </h2>
+    </div>
+
+    <div className="mx-auto mt-5 max-w-[620px] divide-y divide-[var(--line)] border-y border-[var(--line)]">
+
+      <figure className="py-4">
+        <blockquote className="font-display text-[0.91rem] italic leading-[1.55] text-[var(--ink)]">
+          “Percebi que eu não mudava de decisão do nada. Existiam situações
+          muito específicas em que eu começava a ceder. Isso foi o que mais me
+          marcou.”
+        </blockquote>
+
+        <figcaption className="mt-2 text-[9px] font-medium tracking-wide text-[var(--ink-soft)]">
+          — Cliente, 41 anos
+        </figcaption>
+      </figure>
+
+      <figure className="py-4">
+        <blockquote className="font-display text-[0.91rem] italic leading-[1.55] text-[var(--ink)]">
+          “Saí da sessão entendendo qual ponto eu precisava observar primeiro.
+          Não foi uma resposta pronta, mas finalmente senti que tinha um caminho
+          para começar.”
+        </blockquote>
+
+        <figcaption className="mt-2 text-[9px] font-medium tracking-wide text-[var(--ink-soft)]">
+          — Cliente, 35 anos
+        </figcaption>
+      </figure>
+
+    </div>
+
+    <p className="mt-3 text-center text-[8px] leading-relaxed text-[var(--ink-soft)]">
+      Identificações preservadas para respeitar a privacidade das clientes.
+    </p>
+  </div>
+</section>
+
+        {/* AUTORIDADE */}
+        <section className="px-5 py-9 sm:px-6 sm:py-12">
+          <div className="mx-auto max-w-[760px]">
+            <div className="grid items-center gap-5 md:grid-cols-[0.58fr_1.42fr] md:gap-8">
+              <div className="mx-auto w-full max-w-[175px] sm:max-w-[205px]">
+                <div className="overflow-hidden rounded-[18px] border border-[var(--line)] bg-white/70 p-1.5 shadow-sm">
+                  <img
+                    src="/erica-soares.jpg"
+                    alt="Érica Soares"
+                    className="aspect-[4/5] w-full rounded-[13px] object-cover object-top"
+                    loading="lazy"
+                  />
                 </div>
               </div>
 
               <div className="text-center md:text-left">
-                <SectionLabel>Quem conduz essa análise</SectionLabel>
+                <SectionLabel>Quem conduz a sessão</SectionLabel>
 
-                <h2 className="font-display text-[1.75rem] font-medium leading-[1.18] text-[var(--ink)] sm:text-[2.15rem]">
-                  Meu trabalho é localizar onde essa repetição começa a
-                  interferir nas suas escolhas
-                  <span className="mt-2 block italic text-[var(--clay-deep)]">
-                    — e transformar isso em um primeiro foco de mudança.
+                <h2 className="font-display text-[1.48rem] font-medium leading-[1.17] text-[var(--ink)] sm:text-[1.8rem]">
+                  Eu não vou decidir por você
+                  <span className="italic text-[var(--clay-deep)]">
+                    {' '}
+                    se deve ficar ou terminar.
                   </span>
                 </h2>
 
-                <p className="mt-6 text-[1rem] leading-relaxed text-[var(--ink-soft)]">
-                  Você pode já saber que quer colocar um limite, se afastar ou
-                  fazer escolhas diferentes. O que nem sempre está claro é o
-                  que acontece quando entra vínculo, culpa, medo, expectativa
-                  ou esperança — e aquela decisão começa a perder força.
+                <p className="mx-auto mt-3 max-w-lg text-[0.92rem] leading-relaxed text-[var(--ink-soft)] md:mx-0">
+                  Meu trabalho é localizar com você o momento em que aquilo que
+                  parecia decidido começa a perder força — e definir onde agir
+                  primeiro para começar a interromper a repetição.
                 </p>
 
-                <p className="mt-5 text-[1rem] leading-relaxed text-[var(--ink)]">
-                  É justamente esse intervalo entre o que você sabe que
-                  gostaria de fazer e aquilo que consegue sustentar na prática
-                  que eu investigo na Sessão de Mapeamento.
-                </p>
-
-                <div className="mt-7 rounded-[24px] border border-[var(--line)] bg-white/70 p-6 sm:p-7">
-                  <p className="font-display text-[1.12rem] font-medium text-[var(--ink)]">
-                    A análise começa antes da nossa chamada.
+                <div className="mt-4 border-t border-[var(--line)] pt-4">
+                  <p className="font-display text-[1.18rem] font-medium text-[var(--ink)]">
+                    Érica Soares
                   </p>
 
-                  <p className="mt-3 text-[0.96rem] leading-relaxed text-[var(--ink-soft)]">
-                    As informações que você compartilha no formulário ajudam a
-                    organizar os pontos que precisam ser aprofundados. Durante
-                    o encontro, eu procuro localizar:
+                  <p className="mt-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-[var(--clay)]">
+                    Psicanalista
                   </p>
 
-                  <ul className="mt-6 space-y-3">
-                    {[
-                      'o que acontece antes de você ceder ou mudar de decisão',
-                      'quais situações parecem reativar a mesma dinâmica',
-                      'onde existe distância entre aquilo que você deseja e aquilo que consegue sustentar',
-                      'quais explicações parecem fazer sentido quando confrontadas com situações reais',
-                      'qual ponto, entre os encontrados, merece atenção primeiro',
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-[var(--clay)]" />
-
-                        <span className="text-[0.98rem] leading-relaxed text-[var(--ink)]">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-7 border-l-2 border-[var(--clay)] pl-5 text-left">
-                  <p className="font-display text-[1.15rem] leading-relaxed text-[var(--ink)] sm:text-[1.22rem]">
-                    Ao final, você não precisa sair com todas as respostas.
-                    Precisa sair sabendo onde concentrar sua atenção primeiro
-                    para começar a mudar a dinâmica que hoje impede você de
-                    viver a relação que deseja construir.
+                  <p className="mt-1 text-[10px] leading-relaxed text-[var(--ink-soft)]">
+                    Especialista em Neurociência do Comportamento Humano
                   </p>
                 </div>
-
-                <p className="mt-6 text-[0.94rem] leading-relaxed text-[var(--ink-soft)]">
-                  A análise é construída a partir do que você compartilha, sem
-                  respostas prontas ou decisões impostas a você.
-                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="px-6 py-16 sm:py-20">
-          <div className="mx-auto max-w-[720px]">
+        {/* OBJEÇÕES */}
+        <section className="border-y border-[var(--line)] bg-[var(--paper-warm)] px-5 py-9 sm:px-6 sm:py-11">
+          <div className="mx-auto max-w-[660px]">
             <div className="text-center">
-              <SectionLabel>Perguntas frequentes</SectionLabel>
+              <SectionLabel>Antes de agendar</SectionLabel>
 
-              <h2 className="font-display text-[1.65rem] font-medium leading-tight text-[var(--ink)] sm:text-[2rem]">
-                O que você pode querer saber antes de agendar
+              <h2 className="font-display text-[1.5rem] font-medium leading-[1.15] text-[var(--ink)] sm:text-[1.8rem]">
+                Talvez uma dessas dúvidas
+                <span className="italic text-[var(--clay-deep)]">
+                  {' '}
+                  esteja passando pela sua cabeça.
+                </span>
               </h2>
             </div>
 
-            <div className="mt-7">
-              {FAQ_ITEMS.map((faq) => (
-                <FaqItem
-                  key={faq.question}
-                  question={faq.question}
-                  answer={faq.answer}
-                />
+            <div className="mt-5 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+              {OBJECTIONS.map((item) => (
+                <details
+                  key={item.title}
+                  className="group py-3.5 [&_summary::-webkit-details-marker]:hidden"
+                >
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left">
+                    <span className="font-display text-[0.96rem] font-medium leading-snug text-[var(--ink)]">
+                      {item.title}
+                    </span>
+
+                    <span
+                      aria-hidden="true"
+                      className="shrink-0 text-lg font-light text-[var(--clay)] transition-transform duration-200 group-open:rotate-45"
+                    >
+                      +
+                    </span>
+                  </summary>
+
+                  <p className="mt-3 pr-7 text-[0.87rem] leading-relaxed text-[var(--ink-soft)]">
+                    {item.text}
+                  </p>
+                </details>
               ))}
             </div>
+
+            <p className="mx-auto mt-4 max-w-md text-center font-display text-[0.98rem] leading-relaxed text-[var(--ink)]">
+              Você não precisa ter todas as respostas.
+              <span className="italic text-[var(--clay-deep)]">
+                {' '}
+                Só precisa perceber que continuar repetindo do mesmo jeito já
+                não é suficiente.
+              </span>
+            </p>
           </div>
         </section>
 
         {/* CTA FINAL */}
-        <section className="border-t border-[var(--line)] bg-[var(--paper-warm)] px-6 py-16 sm:py-20">
-          <div className="mx-auto max-w-[720px] text-center">
+        <section className="px-5 py-10 sm:px-6 sm:py-15">
+          <div className="mx-auto max-w-[610px] text-center">
             <SectionLabel>Seu próximo passo</SectionLabel>
 
-            <h2 className="font-display text-[1.75rem] font-medium leading-[1.18] text-[var(--ink)] sm:text-[2.2rem]">
-              Você não precisa esperar o ciclo se repetir
-              <span className="block italic text-[var(--clay-deep)]">
-                para tentar entendê-lo.
+            <h2 className="font-display text-[1.67rem] font-medium leading-[1.12] text-[var(--ink)] sm:text-[2rem]">
+              Você já sabe o que não quer mais repetir.
+              <span className="mt-2 block italic text-[var(--clay-deep)]">
+                Agora precisa localizar onde essa repetição começa.
               </span>
             </h2>
 
-            <p className="mx-auto mt-5 max-w-xl text-[1rem] leading-relaxed text-[var(--ink-soft)]">
-              Se você já percebe que existe uma distância entre a relação que
-              deseja viver e aquilo que acaba conseguindo sustentar, talvez o
-              próximo passo não seja tentar decidir mais uma vez — mas entender
-              onde essa decisão começa a mudar.
+            <p className="mx-auto mt-4 max-w-lg text-[0.92rem] leading-relaxed text-[var(--ink-soft)]">
+              Na Sessão de Mapeamento, nós localizamos onde sua decisão começa a
+              perder força e definimos onde agir primeiro.
             </p>
 
-            <div className="mt-8 flex justify-center">
-              <div className="flex flex-col items-center">
-                <CtaButton />
+            <div className="mx-auto mt-5 max-w-[370px] border-y border-[var(--line)] py-4">
+              <p className="text-[0.87rem] font-medium text-[var(--ink)]">
+                Sessão individual online · até 90 minutos
+              </p>
 
-                <p className="mt-4 text-sm text-[var(--ink-soft)]">
-                  Online · Individual · até 90 minutos · R$147
-                </p>
-              </div>
+              <p className="mt-1 text-[0.82rem] text-[var(--ink-soft)]">
+                + Mapa de Padrão Emocional personalizado
+              </p>
+
+              <p className="mt-2 text-[0.9rem] text-[var(--ink-soft)]">
+  Investimento ·{' '}
+  <span className="font-medium text-[var(--ink)]">
+    R$ 147
+  </span>
+</p>
             </div>
 
-            <p className="mx-auto mt-5 max-w-md text-xs leading-relaxed text-[var(--ink-soft)]">
-              Agendamento e pagamento pelo WhatsApp. Sua devolutiva é enviada
-              depois da sessão independentemente de qualquer continuidade.
+            <div className="mt-5">
+              <CtaButton />
+            </div>
+
+            <p className="mx-auto mt-3 max-w-sm text-[10px] leading-relaxed text-[var(--ink-soft)]">
+              Ao clicar, você fala com nossa equipe pelo WhatsApp para verificar
+              os horários disponíveis.
+            </p>
+
+            <p className="mx-auto mt-3 max-w-md text-[10px] leading-relaxed text-[var(--ink-soft)]/80">
+              Seu Mapa é enviado depois da sessão independentemente de qualquer
+              continuidade.
             </p>
           </div>
         </section>
       </main>
 
       {/* RODAPÉ */}
-      <footer className="border-t border-[var(--line)] px-6 py-10">
-        <div className="mx-auto max-w-md text-center text-sm leading-relaxed text-[var(--ink-soft)]">
-          <p>Atendimento individual, online e confidencial.</p>
-
-          <p className="mt-2 font-display italic text-[15px]">
-            Para quem percebe que já tentou decidir diferente, mas ainda
-            encontra dificuldade para sustentar essa decisão.
+      <footer className="border-t border-[var(--line)] px-5 py-7">
+        <div className="mx-auto max-w-md text-center">
+          <p className="text-[10px] leading-relaxed text-[var(--ink-soft)]">
+            Atendimento individual, online e confidencial.
           </p>
 
-          <p className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.14em] text-[var(--ink-soft)]/80">
-            <span>Atendimento online</span>
-            <span aria-hidden="true">·</span>
-            <span>Sigilo profissional</span>
-            <span aria-hidden="true">·</span>
-            <span>Atendimento individual</span>
+          <p className="mt-2 text-[9px] uppercase tracking-[0.12em] text-[var(--ink-soft)]/75">
+            Érica Soares · Psicanálise e Neurociência Aplicada
           </p>
         </div>
       </footer>
