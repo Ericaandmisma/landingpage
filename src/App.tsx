@@ -599,8 +599,7 @@ export default function App() {
             </div>
 
             <p className="mx-auto mt-3 max-w-sm text-[10px] leading-relaxed text-[var(--ink-soft)]">
-              Ao clicar, você fala com nossa equipe pelo WhatsApp para verificar
-              os horários disponíveis.
+              Você será direcionada ao WhatsApp para consultar os horários disponíveis. O agendamento só é confirmado após sua escolha.
             </p>
 
             <p className="mx-auto mt-3 max-w-md text-[10px] leading-relaxed text-[var(--ink-soft)]/80">
